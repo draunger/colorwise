@@ -71,7 +71,7 @@ letter-spacing: -2%;
   
   .upload-box {
     width: 592px;
-    height: 126px;
+    height: 255px;
     border: 2px dashed #b4a0e5; 
     border-radius: 8px;
     display: flex;
@@ -182,4 +182,8 @@ gap: 20px;
     padding-right:32px ;
     padding-left: 32px;
     gap: 64px;
+}
+.upload-image{
+    width: 592px;
+    height: 126px;
 }

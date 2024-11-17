@@ -1,7 +1,16 @@
-
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 const Frontpage = () => {
+  const navigate = useNavigate();
+  const change= (e)=>{
+    const value = URL.createObjectURL(e.target.files[0]);
+    if(value)
+    {
+      navigate('/photo-choose');
+    }
+
+  }
   return (
     <div className='outer-box'>
     <div className="inside-box">
@@ -30,9 +39,8 @@ const Frontpage = () => {
           <p>Click to upload or drag and drop</p>
           <span>SVG, PNG, JPG or GIF</span>
         </div>
-        <input type="file" id="file-upload" className="file-input" />
+        <input type="file" id="file-upload" className="file-input"  onChange={change}/>
       </label>
-        <button className='palette-button'>Create Your Palette</button>
       </div>
 
 
