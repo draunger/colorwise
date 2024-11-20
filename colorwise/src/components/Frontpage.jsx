@@ -7,7 +7,7 @@ const Frontpage = () => {
     const value = URL.createObjectURL(e.target.files[0]);
     if(value)
     {
-      navigate('/photo-choose');
+      navigate('/photo-choose', { state: { value } });
     }
 
   }
