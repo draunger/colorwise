@@ -11,8 +11,8 @@ const Footer = () => {
        </div>
        <div>
 
-        <input type="text" placeholder="enter your mail"/>
-        <button>Subscribe</button>
+        <input  style={{"border-radius":"5px"}} type="text" placeholder="enter your mail"/> 
+        <button style={{"border-radius":"5px"}}>Subscribe</button>
        </div>
 
       </div>
