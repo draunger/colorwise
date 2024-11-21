@@ -50,7 +50,7 @@ const Frontpage = () => {
 
 
       <div className='inner-right-side-box'>
-        <img src="./p12.png" alt="photo of design" />
+        <img className='p12' src="./p12.png" alt="photo of design" />
       </div>
 
 
@@ -62,14 +62,14 @@ const Frontpage = () => {
        
       <div className=' inner-big-down-block'>
         <div className='inner-inner-down-block'>
-            <p>Our capabilities</p>
+            <h2>Our capabilities</h2>
             <h3>Why Use Our Color Analysis Tool?</h3>
-            <h5>
+            <h3>
             Your personal color palette is more than just a range of shades; it’s a path to <br />
              feeling confident, radiant, and truly yourself. Our advanced color analysis tool <br />
              reveals colors that harmonize with your unique skin tone, eye color, and hair <br /> 
             color, making it easier to choose tones that enhance your natural beauty.
-            </h5>
+            </h3>
         </div>
 
       </div>

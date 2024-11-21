@@ -1,7 +1,7 @@
 import '../App.css';
 import { useLocation } from 'react-router-dom';
 import { ImageColorPicker } from 'react-image-color-picker';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Photo = () => {
     const location = useLocation(); 
@@ -15,7 +15,7 @@ const Photo = () => {
     const [name, setName] = useState("");
     const [head,sethead] = useState("");
     const [head1,sethead1] = useState("");
-    const [ar, setar] = useState([]);
+    const [arr, setar] = useState([]);
     const [avoid,setavoid]=useState([]);
 
     function b1() {
@@ -52,24 +52,25 @@ const Photo = () => {
         }
     }
 
-    function generate() {
-        fetch(`https://79103a91-278b-49aa-bc08-0c3af5549d4c.mock.pstmn.io/color`)
-            .then((response) => response.json())
-            .then((data) => {
-                setName(data.palette_Name);
-                setar(...ar,data.recommended_colors);
-                setavoid(...avoid,data.colors_to_avoid);
-                sethead("recommended_colors :");
-                sethead1("colors_to_avoid :");
-            });
+    function generate() 
+    {
+      useEffect(fetch(`https://79103a91-278b-49aa-bc08-0c3af5549d4c.mock.pstmn.io/color`)
+      .then((response) => response.json())
+      .then((data) => {
+          setName(data.palette_Name);
+          setar(data.recommended_colors);
+          setavoid(data.colors_to_avoid);
+          sethead("recommended_colors :");
+          sethead1("colors_to_avoid :");
+      }) ,[])
     }
 
     return (
         <div className='photo-big-box'>
             <h1>Select Your Colors</h1>
-            <p>Use the color picker tool to identify your hair, skin, and eye colors. For hair and skin, choose the <br />
+            <h2>Use the color picker tool to identify your hair, skin, and eye colors. For hair and skin, choose the <br />
             primary tones without focusing on highlights or shadows. For eyes, select the most prominent color, <br />
-            typically found in the center of the iris.</p>
+            typically found in the center of the iris.</h2>
             
             <div className='main-photo'>
                 <ImageColorPicker onColorPick={picker} imgSrc={ph} />
@@ -80,13 +81,13 @@ const Photo = () => {
                 <button className='bn' onClick={b2} style={{ backgroundColor: bgColor1 }}>Hair</button>
                 <button className='bn' onClick={b3} style={{ backgroundColor: bgColor2 }}>Eye</button>
             </div>
-
-            <button onClick={generate}>Generate Palette</button>   
+            <br /><br /> <br />
+            <button className='fetch-button' onClick={generate}>Generate Palette</button>   
             
            <h1>{name}</h1>    
            <h2>{head}</h2>   
         <div className='color-box' style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "20px", }}>
-           {ar.map((color) => (
+           {arr.map((color) => (
             <div>
 
             <div style={{
@@ -101,19 +102,16 @@ const Photo = () => {
             <p className='description'>{color.description}</p>
             </div>
           
-           ))}
+           ))
+           }
         </div>
 
 
 
-           <h1 >{head1}  </h1>   
+      <h1 >{head1}  </h1>   
         <div className='color-box' style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "20px", }}>
-          
-        
-        
            {avoid.map((color) => (
             <div>
-
             <div style={{
                 backgroundColor: color.hex_code, 
                 height: "150px",
