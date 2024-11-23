@@ -6,7 +6,7 @@ const Navbar = () => {
        <ul className='items'>
        <ul>
   <a
-    href="/"
+    href="#"
     style={{
       color: "#E31B54",
       textDecoration: "none",

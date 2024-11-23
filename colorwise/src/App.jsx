@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Frontpage />} />
+          <Route path="#" element={<Frontpage />} />
           <Route path="/photo-choose" element={<Photo />} />
         </Routes>
       </HashRouter>
